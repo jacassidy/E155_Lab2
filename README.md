@@ -1,0 +1,1 @@
+In this lab, time multiplexing is used to control two 7-segment displays with 9 pins. This method limits external and internal hardware at the cost of only illuminating a single 7-segment display at a time. Since it is a human read display being controlled in this situation, this method of control doesn't have any cons in application since the swithing cannot be seen by the eye.

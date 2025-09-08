@@ -1,0 +1,35 @@
+// James Kaden Cassidy kacassidy@hmc.edu 8/31/2025
+
+module clock_divider #(parameter div_count) (
+    input   logic   clk,
+    input   logic   reset,
+    output  logic   clk_divided
+);
+
+ localparam bits_wide = $clog2(div_count/2);
+
+ logic[bits_wide-1:0] oscillator_count, oscillator_countp1;
+ logic                clear;
+
+ assign oscillator_countp1 = oscillator_count + 1;
+ 
+ // add one to the oscillator count on each oscillator posedge
+ always_ff @ (posedge clk) begin
+    if(reset == 0 | clear)  oscillator_count <= 'b0;
+    else                    oscillator_count <= oscillator_countp1;
+ end
+
+ // When the count reaches div_count, clear the counter and start again
+ always_comb begin
+    if (oscillator_count == div_count)   clear = 1'b1;
+    else                                 clear = 1'b0;
+ end
+ 
+ // Each time the count is clear, toggle the led
+ always_ff @ (posedge clear) begin
+    clk_divided <= ~clk_divided;
+ end    
+
+  
+
+endmodule

@@ -1,0 +1,18 @@
+// James Kaden Cassidy kacassidy@hmc.edu 8/31/2025
+// all permutations of switches followed by the expected value of the two onobard leds (led[0] and led[1])
+0000_00
+0001_00
+0010_00
+0011_01
+0100_10
+0101_10
+0110_10
+0111_11
+1000_10
+1001_10
+1010_10
+1011_11
+1100_00
+1101_00
+1110_00
+1111_01
