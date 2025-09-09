@@ -6,7 +6,7 @@
 // timeunit 1ns;
 // timeprecision 1ps;
 
-// module testbench();
+// module top_testbench();
 
 //     logic clk, reset;
 // 	logic result;

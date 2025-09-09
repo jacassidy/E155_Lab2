@@ -2,7 +2,7 @@
 
 // testbench to confirm all permutations of seven segment display are correct
 
-module testbench();
+module seven_seg_testbench();
 
     logic clk, reset;
 	logic result;

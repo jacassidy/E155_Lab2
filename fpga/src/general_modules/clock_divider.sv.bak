@@ -6,7 +6,7 @@ module clock_divider #(parameter div_count) (
     output  logic   clk_divided
 );
 
- localparam bits_wide = $clog2(div_count);
+ localparam bits_wide = $clog2(div_count/2);
 
  logic[bits_wide-1:0] oscillator_count, oscillator_countp1;
  logic                clear;
@@ -15,20 +15,20 @@ module clock_divider #(parameter div_count) (
  
  // add one to the oscillator count on each oscillator posedge
  always_ff @ (posedge clk) begin
-    if(reset | clear)  oscillator_count <= 'b0;
-    else               oscillator_count <= oscillator_countp1;
+    if(reset == 0 | clear)  oscillator_count <= 'b0;
+    else                    oscillator_count <= oscillator_countp1;
  end
 
  // When the count reaches div_count, clear the counter and start again
  always_comb begin
-    if (oscillator_count == div_count-1)   clear = 1'b1;
+    if (oscillator_count == div_count)   clear = 1'b1;
     else                                 clear = 1'b0;
  end
  
  // Each time the count is clear, toggle the led
- always_ff @ (posedge clk) begin
+ always_ff @ (posedge clear) begin
    if (reset)  clk_divided <= 1'b0;
-   if (clear)  clk_divided <= ~clk_divided;
+   else        clk_divided <= ~clk_divided;
  end    
 
   
