@@ -39,7 +39,7 @@ module lab2_top (
  HSOSC #(.CLKHF_DIV(2'b00)) hf_osc (.CLKHFPU(1'b1), .CLKHFEN(1'b1), .CLKHF(clk));
 
  // Divider to reduce oscillator from 48Mhz to a speed not visible to the eye, but slow enough didgits are independent
- clock_divider #(.div_count(100000)) Clock_Divider(.clk(int_osc), .reset, .clk_divided(display_output_select));
+	clock_divider #(.div_count(100000)) Clock_Divider(.clk(clk), .reset, .clk_divided(display_output_select));
  
  assign div_clk = display_output_select;
 
