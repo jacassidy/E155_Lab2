@@ -25,7 +25,7 @@ module seven_segment_display(
             4'hd    : segments = 7'b1000010; // d
             4'he    : segments = 7'b0110000; // e
             4'hf    : segments = 7'b0111000; // f
-            default : segments = 7'b0000000;
+            default : segments = 7'b1111110; // -
         endcase
     end
 

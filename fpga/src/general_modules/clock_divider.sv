@@ -1,5 +1,8 @@
 // James Kaden Cassidy kacassidy@hmc.edu 8/31/2025
 
+// this module is made to reduce the clock cycle by an arbitrary number. It functions by counting clock cycles and toggling a flop
+// once a the count hits div_count
+
 module clock_divider #(parameter div_count) (
     input   logic   clk,
     input   logic   reset,
